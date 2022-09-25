@@ -12,6 +12,7 @@ class MainFragment: Fragment() {
     // View Binding with 'fragment_main.xml' so we get reference to xml layout objects easier.
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+
     // Holds the controller instance
     private var controller: MainController? = null
 
@@ -34,11 +35,13 @@ class MainFragment: Fragment() {
         setupClickListeners()
     }
 
-    // Setup the button in our fragment to call getUpdatedText method in viewModel
+    /**
+     * Setup the button in our fragment to invoke the controller to get the data.
+     */
     private fun setupClickListeners() {
         binding.fragmentButton.setOnClickListener {
             // Update the textView with the data received through the controller
-            binding.fragmentTextView.text = controller?.getUpdatedText()
+            binding.fragmentTextView.text = controller?.getUpdatedTextFromModel()
         }
     }
 }
